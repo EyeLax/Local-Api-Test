@@ -1,0 +1,43 @@
+@Api_Bouvet_HostAddress = http://localhost:7128
+
+GET {{Api_Bouvet_HostAddress}}/projects
+Accept: application/json
+
+###
+
+### Get a single Project by ID
+GET {{Api_Bouvet_HostAddress}}/projects/1
+Accept: application/json
+
+###
+
+### Create a new Project
+POST {{Api_Bouvet_HostAddress}}/projects
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "New Project",
+  "description": "A description of the new project"
+}
+
+###
+
+### Update an existing Project
+PUT {{Api_Bouvet_HostAddress}}/projects/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id": 1,
+  "name": "Updated Project Name",
+  "description": "Updated description of the project"
+}
+
+###
+
+### Delete a Project
+DELETE {{Api_Bouvet_HostAddress}}/projects/1
+Accept: application/json
+
+###

@@ -4,6 +4,11 @@
 ## SQL Test Data
 
 ```sql
+-- Remove existing data in the correct order to avoid foreign key constraint violations
+DELETE FROM Tasks;
+DELETE FROM Epics;
+DELETE FROM Projects;
+
 -- Insert test data into the Projects table
 INSERT INTO Projects (Name, Description, ProjectManager) VALUES
 ('Project Alpha', 'Description of Project Alpha', 'Jane Doe'),
@@ -23,4 +28,5 @@ INSERT INTO Tasks (Name, Description, Responsible, EpicId) VALUES
 ('Task 2', 'Description of Task 2 in Epic 1', 'Bob', 1),
 ('Task 3', 'Description of Task 3 in Epic 2', 'Charlie', 2),
 ('Task 4', 'Description of Task 4 in Epic 3', 'Dana', 3);
+
 ```

@@ -57,8 +57,24 @@ namespace Api_Bouvet.Controllers
             return task;
         }
 
-        // PUT: api/Tasks/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Updates an existing task
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     PUT /api/tasks/1
+        ///     {
+        ///         "Id": 1,
+        ///         "Name": "Updated Task Name",
+        ///         "Description": "Updated description of the Task",
+        ///         "Responsible": "Jane Doe",
+        ///         "EpicId": 1
+        ///     }
+        /// </remarks>
+        /// <param name="id">The ID of the task to update</param>
+        /// <param name="task">The task data to update</param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTask(int id, Models.Task task)
         {
@@ -88,8 +104,22 @@ namespace Api_Bouvet.Controllers
             return NoContent();
         }
 
-        // POST: api/Tasks
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     POST /api/tasks
+        ///     {
+        ///         "Name": "Task 5",
+        ///         "Description": "Description of Epic 5 in Epic 1",
+        ///         "Responsible": "John Doe",
+        ///         "EpicId": 1
+        ///      }
+        /// </remarks>
+        /// <param name="task"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<Models.Task>> PostTask(Models.Task task)
         {

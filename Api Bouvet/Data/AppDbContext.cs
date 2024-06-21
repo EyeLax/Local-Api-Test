@@ -21,13 +21,15 @@ namespace Api_Bouvet.Data
             modelBuilder.Entity<Project>()
                 .HasMany(p => p.Epics)
                 .WithOne(e => e.Project)
-                .HasForeignKey(e => e.ProjectId);
+                .HasForeignKey(e => e.ProjectId)
+                .IsRequired();
 
             // Configure the one-to-many relationship between Epic and Task
             modelBuilder.Entity<Epic>()
                 .HasMany(e => e.Tasks)
                 .WithOne(t => t.Epic)
-                .HasForeignKey(t => t.EpicId);
+                .HasForeignKey(t => t.EpicId)
+                .IsRequired();
         }
     }
 }

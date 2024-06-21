@@ -71,8 +71,23 @@ namespace Api_Bouvet.Controllers
 
 
 
-        // PUT: api/Epics/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Updates an existing epic
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     PUT /api/epics/1
+        ///     {
+        ///         "Id": 1,
+        ///         "Name": "Updated Epic Name",
+        ///         "Description": "Updated description of the Epic",
+        ///         "ProjectId": 1
+        ///     }
+        /// </remarks>
+        /// <param name="id">The ID of the epic to update</param>
+        /// <param name="epic">The epic data to update</param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutEpic(int id, Epic epic)
         {
@@ -102,24 +117,33 @@ namespace Api_Bouvet.Controllers
             return NoContent();
         }
 
-        // POST: api/Epics
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Post a new epic
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     POST /api/epics
+        ///     {
+        ///         "Name": "Epic 1",
+        ///         "Description": "Description of Epic 4 in Project Alpha",
+        ///         "ProjectId": 1
+        ///      }
+        /// </remarks>
+        /// <param name="epic"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<Epic>> PostEpic(Epic epic)
         {
-            // Check if the ProjectId on the epic exists in the database
             var project = await _context.Projects.FindAsync(epic.ProjectId);
             if (project == null)
             {
-                // If not, return a NotFound result
                 return NotFound($"Project with ID {epic.ProjectId} not found.");
             }
 
-            // If the project exists, add the epic to the database
             _context.Epics.Add(epic);
             await _context.SaveChangesAsync();
 
-            // Return a CreatedAtAction result, pointing to the GetEpic method
             return CreatedAtAction("GetEpic", new { id = epic.Id }, epic);
         }
 

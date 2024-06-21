@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Api_Bouvet.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240620212338_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240621010247_updateToEntities")]
+    partial class updateToEntities
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -80,7 +80,6 @@ namespace Api_Bouvet.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Responsible")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
